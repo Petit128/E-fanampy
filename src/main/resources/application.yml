@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: efanampy-backend-v2
+  datasource:
+    url: jdbc:postgresql://localhost:5432/efanampy_db
+    username: postgres
+    password: petit
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+  jackson:
+    default-property-inclusion: non_null
+
+app:
+  jwt:
+    secret: "change-me-in-prod-this-is-a-very-long-secret-key-at-least-64-chars-long-1234567890"
+    expiration-ms: 86400000
+  timezone: Indian/Antananarivo
+  devise-defaut: MGA
+  rayon-defaut-km: 10
+  matching:
+    poids-distance: 0.6
+    poids-note: 0.4
+    note-defaut: 3
+    limite: 5
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
